@@ -26,7 +26,10 @@ for vacancy in vacancies:
             company = "Компания не указана"
 
         try:
-            salary = vacancy.find_element(By.CSS_SELECTOR, '[class="vacancy-info--ieHKDTkezpEj0Gsx"]').text.replace('\u00A0', ' ').replace('\u202F', ' ')
+            salary_element = vacancy.find_element(By.CSS_SELECTOR, "span.magritte-text_typography-label-1-regular___pi3R-_3-0-32")
+            salary = salary_element.text.replace('\u00A0', ' ').replace('\u202F', ' ').strip()
+            if not salary:
+                salary = "Зарплата не указана"
         except:
             salary = "Зарплата не указана"
 
